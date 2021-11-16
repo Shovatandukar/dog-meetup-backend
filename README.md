@@ -1,4 +1,4 @@
-# SIMPLE CRUD API WITH DJANGO REST FRAMEWORK
+# DOG MEETUP API WITH DJANGO
 [Django REST framework](http://www.django-rest-framework.org/) is a powerful and flexible toolkit for building Web APIs.
 
 ## Requirements
