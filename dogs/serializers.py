@@ -21,10 +21,12 @@ class EventSerializer(serializers.ModelSerializer):  # create class to serialize
 
 class OwnerSerializer(serializers.ModelSerializer):  # create class to serializer model
     creator = serializers.ReadOnlyField(source='creator.username')
+    dogs = DogSerializer(read_only=True, many=True)
+    events = EventSerializer(read_only=True, many=True)
 
     class Meta:
         model = Owner
-        fields = ('id', 'first_name', 'last_name', 'address', 'email', 'phone', 'creator')
+        fields = ('id', 'first_name', 'last_name', 'address', 'email', 'phone', 'creator', 'dogs', 'events')
 
 
 class UserSerializer(serializers.ModelSerializer):  # create class to serializer user model

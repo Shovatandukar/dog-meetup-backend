@@ -33,6 +33,8 @@ class Owner(models.Model):
     phone = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    dogs = models.ManyToManyField(Dog, related_name="owners_dogs")
+    events = models.ManyToManyField(Event, related_name="owners_event")
     creator = models.ForeignKey('auth.User', related_name='owners', on_delete=models.CASCADE)
 
     class Meta:
