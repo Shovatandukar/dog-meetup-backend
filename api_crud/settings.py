@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'authentication',
-    'dogs'
+    'dogs',
+    'corsheaders',
 ]
 
 SITE_ID = 1
