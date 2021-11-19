@@ -84,3 +84,15 @@ class EventList(generics.ListAPIView):
         """
         user = self.request.user
         return Event.objects.filter(creator=user)
+
+
+class OwnerDetails(generics.ListAPIView):
+    serializer_class = OwnerSerializer
+
+    def get_queryset(self):
+        """
+        This view should return the Owner Profile
+        for the currently authenticated user.
+        """
+        user = self.request.user
+        return Owner.objects.filter(creator=user)

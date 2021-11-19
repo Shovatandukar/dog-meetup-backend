@@ -1,7 +1,7 @@
-from rest_framework import serializers
+from rest_framework import serializers, generics
 from .models import Dog, Event, Owner
-
 from django.contrib.auth.models import User
+from rest_framework import routers, serializers, viewsets
 
 
 class DogSerializer(serializers.ModelSerializer):  # create class to serializer model
@@ -22,9 +22,10 @@ class EventSerializer(serializers.ModelSerializer):  # create class to serialize
 
 class OwnerSerializer(serializers.ModelSerializer):  # create class to serializer model
     creator = serializers.ReadOnlyField(source='creator.username')
-    owner = EventSerializer(read_only=True, many=True)
 
     class Meta:
         model = Owner
-        fields = ('id', 'first_name', 'last_name', 'address', 'email', 'phone', 'creator', 'dogs', 'events')
+        fields = ('id', 'creator', 'address', 'phone', 'first_name', 'last_name', 'email', 'lat', 'lon')
+
+
 

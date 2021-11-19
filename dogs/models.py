@@ -3,8 +3,14 @@ from django.contrib.auth.models import User
 
 
 class Owner(models.Model):
-    user = models.OneToOneField(User, null=True, on_delete=models.SET_NULL)
+    creator = models.ForeignKey('auth.User', related_name='owners', on_delete=models.CASCADE, null=True)
     address = models.CharField(max_length=100)
+    phone = models.CharField(max_length=100, null=True)
+    lat = models.CharField(max_length=100, null=True)
+    lon = models.CharField(max_length=100, null=True)
+    email = models.CharField(max_length=100, null=True)
+    first_name = models.CharField(max_length=100, null=True)
+    last_name = models.CharField(max_length=100, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -18,7 +24,6 @@ class Dog(models.Model):
     weight = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    owner = models.ForeignKey(Owner, on_delete=models.CASCADE, null= True)
     creator = models.ForeignKey('auth.User', related_name='dogs', on_delete=models.CASCADE)
 
     class Meta:
@@ -31,7 +36,6 @@ class Event(models.Model):
     location = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    owner = models.ForeignKey(Owner, on_delete=models.CASCADE, null=True)
     creator = models.ForeignKey('auth.User', related_name='events', on_delete=models.CASCADE)
 
     class Meta:

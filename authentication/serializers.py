@@ -1,7 +1,9 @@
-from rest_framework import serializers
+from rest_framework import serializers, viewsets, generics
 from django.contrib.auth.models import User
+from rest_framework.generics import RetrieveUpdateDestroyAPIView
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
+from django_filters import rest_framework as filters
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -31,3 +33,28 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+
+
+# Serializers define the API representation.
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email']
+
+
+# ViewSets define the view behavior.
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class CurrentUserDetails(viewsets.ModelViewSet):
+    serializer_class = UserSerializer
+
+    def get_queryset(self):
+        """
+        This view should return the Current User
+        for the currently authenticated user.
+        """
+        user = self.request.user
+        return user.objects.filter(id=user.id)
