@@ -38,6 +38,7 @@ class Event(models.Model):
     lon = models.CharField(max_length=100, null=True)
     eventDate = models.CharField(max_length=100, null=True)
     dogType = models.CharField(max_length=100, null=True)
+    attendees = models.CharField(max_length=1000, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     creator = models.ForeignKey('auth.User', related_name='events', on_delete=models.CASCADE)
