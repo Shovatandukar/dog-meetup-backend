@@ -1,0 +1,1 @@
+web: gunicorn dog-meetup.wsgi --log-file -
