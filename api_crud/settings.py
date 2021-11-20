@@ -44,8 +44,7 @@ INSTALLED_APPS = [
     'django_filters',
     'authentication',
     'dogs',
-    'corsheaders',
-]
+    ]
 
 SITE_ID = 1
 
