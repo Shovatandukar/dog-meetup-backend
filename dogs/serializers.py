@@ -20,12 +20,15 @@ class EventSerializer(serializers.ModelSerializer):  # create class to serialize
         fields = ('id', 'title', 'activity', 'location', 'lat', 'lon', 'eventDate', 'dogType', 'attendees', 'creator')
 
 
+class PublicEventSerializer(serializers.ModelSerializer):  # create class to serializer model
+    class Meta:
+        model = Event
+        fields = ('id', 'attendees')
+
+
 class OwnerSerializer(serializers.ModelSerializer):  # create class to serializer model
     creator = serializers.ReadOnlyField(source='creator.username')
 
     class Meta:
         model = Owner
         fields = ('id', 'creator', 'address', 'phone', 'first_name', 'last_name', 'email', 'lat', 'lon')
-
-
-

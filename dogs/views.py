@@ -4,7 +4,7 @@ from rest_framework import generics
 from django_filters import rest_framework as filters
 from .models import Dog, Event, Owner
 from .permissions import IsOwnerOrReadOnly
-from .serializers import DogSerializer, EventSerializer, OwnerSerializer
+from .serializers import DogSerializer, EventSerializer, OwnerSerializer, PublicEventSerializer
 from .pagination import CustomPagination
 from .filters import DogFilter
 
@@ -54,6 +54,12 @@ class RetrieveUpdateDestroyEventAPIView(RetrieveUpdateDestroyAPIView):
     serializer_class = EventSerializer
     queryset = Event.objects.all()
     permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
+
+
+class UpdateEvent(RetrieveUpdateDestroyAPIView):
+    serializer_class = PublicEventSerializer
+    queryset = Event.objects.all()
+    permission_classes = [IsAuthenticated]
 
 
 class RetrieveUpdateDestroyOwnerAPIView(RetrieveUpdateDestroyAPIView):
