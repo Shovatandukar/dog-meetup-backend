@@ -18,7 +18,7 @@ ALLOWED_HOSTS = ['https://dog-meetup-shova.herokuapp.com',
                  'dog-meetup-shova.herokuapp.com',
                  'http://localhost:8000',
                  'http://localhost:3000',
-                 'localhost:3000']
+                 'localhost']
 #CORS_ORIGIN_ALLOW_ALL = True
 
 REST_FRAMEWORK = {
