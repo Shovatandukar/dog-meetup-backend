@@ -17,7 +17,7 @@ class EventSerializer(serializers.ModelSerializer):  # create class to serialize
 
     class Meta:
         model = Event
-        fields = ('id', 'title', 'activity', 'location', 'creator')
+        fields = ('id', 'title', 'activity', 'location', 'lat', 'lon', 'eventDate', 'dogType', 'creator')
 
 
 class OwnerSerializer(serializers.ModelSerializer):  # create class to serializer model
