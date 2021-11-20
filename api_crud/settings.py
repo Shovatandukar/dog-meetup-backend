@@ -15,6 +15,7 @@ SECRET_KEY = 'ftov1!91yf@7f7&g2%*@0_e^)ac&f&9jeloc@#v76#^b1dhbl#'
 DEBUG = True
 
 ALLOWED_HOSTS = ['https://dog-meetup-shova.herokuapp.com',
+                 'dog-meetup-shova.herokuapp.com',
                  'http://localhost:8000',
                  'http://localhost:3000']
 #CORS_ORIGIN_ALLOW_ALL = True
