@@ -1,1 +1,1 @@
-web: gunicorn dog-meetup.wsgi --log-file -
+web: gunicorn api_crud.wsgi --log-file -
